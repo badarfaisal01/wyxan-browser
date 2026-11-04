@@ -3,6 +3,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { DatabaseModule } from './database/database.module';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [
@@ -17,8 +19,11 @@ import { AppService } from './app.service';
       }),
       inject: [ConfigService],
     }),
+    DatabaseModule,
+    SeedModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
+
