@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { SeedModule } from './seed/seed.module';
 import { NavigationModule } from './modules/navigation/navigation.module';
+import { SitesModule } from './modules/sites/sites.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { NavigationModule } from './modules/navigation/navigation.module';
     DatabaseModule,
     SeedModule,
     NavigationModule,
+    SitesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
