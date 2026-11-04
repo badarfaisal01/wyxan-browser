@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { SeedModule } from './seed/seed.module';
+import { NavigationModule } from './modules/navigation/navigation.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { SeedModule } from './seed/seed.module';
     }),
     DatabaseModule,
     SeedModule,
+    NavigationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
