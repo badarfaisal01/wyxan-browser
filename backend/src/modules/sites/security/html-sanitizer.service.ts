@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import sanitizeHtml from 'sanitize-html';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const sanitizeHtml = require('sanitize-html');
 
 @Injectable()
 export class HtmlSanitizerService {
@@ -43,7 +44,7 @@ export class HtmlSanitizerService {
         a: ['http', 'https'], // For links, transformed or checked
       },
       transformTags: {
-        a: (tagName, attribs) => {
+        a: (tagName: string, attribs: Record<string, string>) => {
           let href = attribs.href ? attribs.href.trim() : '';
           // Strip javascript: or data: URIs
           if (/^(?:javascript|data|vbscript):/i.test(href)) {
@@ -69,10 +70,10 @@ export class HtmlSanitizerService {
   extractSearchableText(html: string): string {
     if (!html) return '';
 
-    return sanitizeHtml(html, {
-      allowedTags: [],
-      allowedAttributes: {},
-    })
+    return html
+      .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+      .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+      .replace(/<[^>]+>/g, ' ')
       .replace(/\s+/g, ' ')
       .trim();
   }
