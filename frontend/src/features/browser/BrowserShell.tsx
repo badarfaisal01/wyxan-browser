@@ -8,6 +8,7 @@ import { NotFoundView } from './components/NotFoundView';
 import { ErrorView } from './components/ErrorView';
 import { HistoryDrawer } from '../history/HistoryDrawer';
 import { SearchResultsView } from '../search/SearchResultsView';
+import { PublisherModal } from '../publisher/PublisherModal';
 import { useQuery } from '@tanstack/react-query';
 import { apiClient } from '@/lib/api-client';
 import { Loader2 } from 'lucide-react';
@@ -115,6 +116,15 @@ export const BrowserShell: React.FC = () => {
         onClose={() => setIsHistoryOpen(false)}
         personId={selectedPersonId}
         onNavigate={(dest) => navigate({ destination: dest, source: 'history' })}
+      />
+
+      {/* 4. Publisher Modal */}
+      <PublisherModal
+        isOpen={isPublisherOpen}
+        onClose={() => setIsPublisherOpen(false)}
+        people={people}
+        currentAuthorId={selectedPersonId}
+        onNavigate={(dest) => navigate({ destination: dest, source: 'typed' })}
       />
     </div>
   );
