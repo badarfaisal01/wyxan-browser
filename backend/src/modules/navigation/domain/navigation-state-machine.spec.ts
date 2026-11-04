@@ -138,4 +138,50 @@ describe('NavigationStateMachine (Pure Domain Engine)', () => {
       expect(result.entries[3].scrollPosition).toBe(80);
     });
   });
+
+  describe('Search Destination State Restoration', () => {
+    it('supports search as a first-class destination and restores query/page on back', () => {
+      // 1. User performs a search: query="corals", page=1
+      const searchEntry: NavigationEntry = {
+        entryId: 'entry-search-1',
+        destination: { type: 'search', query: 'corals', page: 1 },
+        title: 'Search: corals',
+        status: 'loaded',
+        scrollPosition: 0,
+        createdAt: new Date(),
+      };
+
+      let state = NavigationStateMachine.navigate([], -1, searchEntry);
+      expect(state.currentIndex).toBe(0);
+      expect(state.targetEntry?.destination).toEqual({
+        type: 'search',
+        query: 'corals',
+        page: 1,
+      });
+
+      // 2. User clicks on a result leading to coral-reef.zz
+      const resultSiteEntry: NavigationEntry = {
+        entryId: 'entry-site-reef',
+        destination: { type: 'site', address: 'coral-reef.zz' },
+        title: 'Coral Reef Sanctuary',
+        status: 'loaded',
+        scrollPosition: 0,
+        createdAt: new Date(),
+      };
+
+      state = NavigationStateMachine.navigate(state.entries, state.currentIndex, resultSiteEntry, 240);
+      expect(state.currentIndex).toBe(1);
+      expect(state.entries[0].scrollPosition).toBe(240); // preserves search list scroll position
+
+      // 3. User clicks Back: search destination and query parameters are fully restored!
+      state = NavigationStateMachine.back(state.entries, state.currentIndex);
+      expect(state.currentIndex).toBe(0);
+      expect(state.targetEntry?.destination).toEqual({
+        type: 'search',
+        query: 'corals',
+        page: 1,
+      });
+      expect(state.targetEntry?.scrollPosition).toBe(240);
+    });
+  });
 });
