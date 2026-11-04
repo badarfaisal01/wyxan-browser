@@ -8,6 +8,7 @@ import { SeedModule } from './seed/seed.module';
 import { NavigationModule } from './modules/navigation/navigation.module';
 import { SitesModule } from './modules/sites/sites.module';
 import { SearchModule } from './modules/search/search.module';
+import { PeopleModule } from './modules/people/people.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { SearchModule } from './modules/search/search.module';
     NavigationModule,
     SitesModule,
     SearchModule,
+    PeopleModule,
   ],
   controllers: [AppController],
   providers: [AppService],
