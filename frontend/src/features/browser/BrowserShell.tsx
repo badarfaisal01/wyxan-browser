@@ -7,6 +7,7 @@ import { IframeViewer } from './components/IframeViewer';
 import { NotFoundView } from './components/NotFoundView';
 import { ErrorView } from './components/ErrorView';
 import { HistoryDrawer } from '../history/HistoryDrawer';
+import { SearchResultsView } from '../search/SearchResultsView';
 import { useQuery } from '@tanstack/react-query';
 import { apiClient } from '@/lib/api-client';
 import { Loader2 } from 'lucide-react';
@@ -83,6 +84,14 @@ export const BrowserShell: React.FC = () => {
             canGoBack={browserState?.canGoBack ?? false}
             onGoBack={() => goBack(currentEntry?.scrollPosition)}
             onSearch={(q) => navigate({ destination: { type: 'search', query: q, page: 1 } })}
+          />
+        ) : currentEntry?.destination.type === 'search' ? (
+          <SearchResultsView
+            query={currentEntry.destination.query}
+            page={currentEntry.destination.page || 1}
+            onNavigate={(dest) =>
+              navigate({ destination: dest, source: 'link' })
+            }
           />
         ) : isSiteDestination && siteData ? (
           <IframeViewer
