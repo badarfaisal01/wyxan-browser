@@ -168,6 +168,12 @@ wyxan-browser/
 │   ├── package.json
 │   └── tsconfig.json
 ├── docs/                         # Architecture, schemas, and specifications
+│   ├── IMPLEMENTATION_PLAN.md    # 8-Phase, 26-commit development roadmap
+│   ├── SYSTEM_DESIGN.md          # Modular monolith & persistence architecture
+│   ├── NAVIGATION_RULES.md       # State machine invariants & branching rules
+│   ├── SECURITY_MODEL.md         # Multi-layer HTML containment & sandboxing
+│   └── VERIFICATION_RUNBOOK.md   # Step-by-step walkthrough & demo script
+├── test/e2e/                     # Playwright automated test suites
 ├── docker-compose.yml            # Local MongoDB container setup
 └── README.md
 ```
