@@ -6,6 +6,7 @@ import { TopChrome } from './components/TopChrome';
 import { IframeViewer } from './components/IframeViewer';
 import { NotFoundView } from './components/NotFoundView';
 import { ErrorView } from './components/ErrorView';
+import { HistoryDrawer } from '../history/HistoryDrawer';
 import { useQuery } from '@tanstack/react-query';
 import { apiClient } from '@/lib/api-client';
 import { Loader2 } from 'lucide-react';
@@ -98,6 +99,14 @@ export const BrowserShell: React.FC = () => {
           </div>
         )}
       </main>
+
+      {/* 3. History Drawer */}
+      <HistoryDrawer
+        isOpen={isHistoryOpen}
+        onClose={() => setIsHistoryOpen(false)}
+        personId={selectedPersonId}
+        onNavigate={(dest) => navigate({ destination: dest, source: 'history' })}
+      />
     </div>
   );
 };
