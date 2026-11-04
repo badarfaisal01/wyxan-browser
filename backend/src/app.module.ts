@@ -7,6 +7,7 @@ import { DatabaseModule } from './database/database.module';
 import { SeedModule } from './seed/seed.module';
 import { NavigationModule } from './modules/navigation/navigation.module';
 import { SitesModule } from './modules/sites/sites.module';
+import { SearchModule } from './modules/search/search.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { SitesModule } from './modules/sites/sites.module';
     SeedModule,
     NavigationModule,
     SitesModule,
+    SearchModule,
   ],
   controllers: [AppController],
   providers: [AppService],
