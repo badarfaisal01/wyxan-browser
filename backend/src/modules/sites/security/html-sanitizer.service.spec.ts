@@ -70,3 +70,4 @@ describe('HtmlSanitizerService (Defense-in-depth HTML Security)', () => {
     });
   });
 });
+

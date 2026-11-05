@@ -18,3 +18,4 @@ export class SearchController {
     return this.searchService.search(dto);
   }
 }
+

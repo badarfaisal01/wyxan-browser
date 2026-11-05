@@ -30,3 +30,4 @@ export const ErrorView: React.FC<ErrorViewProps> = ({ message, onRetry }) => {
     </div>
   );
 };
+

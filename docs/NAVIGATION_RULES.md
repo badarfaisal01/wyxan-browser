@@ -26,3 +26,4 @@ All transitions pass through `NavigationStateMachine` (`backend/src/modules/navi
 ### 5. Address Not Found (404)
 - Non-existent `.zz` addresses generate a `not-found` navigation entry in the stack.
 - Pressing Back returns smoothly to the previous valid site.
+

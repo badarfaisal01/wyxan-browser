@@ -15,3 +15,4 @@ export class PeopleController {
     return this.peopleService.listAll();
   }
 }
+

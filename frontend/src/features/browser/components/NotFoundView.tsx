@@ -56,3 +56,4 @@ export const NotFoundView: React.FC<NotFoundViewProps> = ({
     </div>
   );
 };
+

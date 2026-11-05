@@ -36,3 +36,4 @@ export const PersonaSwitcher: React.FC<PersonaSwitcherProps> = ({
     </div>
   );
 };
+

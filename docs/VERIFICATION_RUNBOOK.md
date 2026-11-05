@@ -50,3 +50,4 @@ npx playwright test
 | **6. Full-Content Search** | In omnibox, type `search: coral` or click search button | Results view opens displaying matching `.zz` pages with snippets. Click result, then click Back to verify query restoration. |
 | **7. Self-Publishing** | Click "Publish", enter `atlantis.zz`, a title, and HTML with an internal link, then click "Publish Page" | Address is validated, HTML is sanitized, site is indexed, and browser navigates to the new page. |
 | **8. Profile Switching** | Switch profile dropdown from "Alice" to "Bob Deepdiver" | Bob's independent session (`deep-trench.zz`) and distinct historical audit trail load instantly. |
+

@@ -93,3 +93,4 @@ export class NavigationController {
     return this.navigationService.getVisitHistory(personId, limit ? Number(limit) : 50, skip ? Number(skip) : 0);
   }
 }
+

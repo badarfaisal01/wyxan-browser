@@ -10,3 +10,4 @@ import { PeopleController } from './people.controller';
   exports: [PeopleService],
 })
 export class PeopleModule {}
+

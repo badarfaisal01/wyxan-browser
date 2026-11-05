@@ -79,3 +79,4 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
     </div>
   );
 };
+

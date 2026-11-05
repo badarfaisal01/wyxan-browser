@@ -20,3 +20,4 @@ User-published content is untrusted by default. The system enforces strict defen
 
 4. **Internal Link Routing:**
    - Link clicks inside the iframe are intercepted by event listeners and routed back through the backend navigation API.
+

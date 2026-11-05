@@ -33,8 +33,9 @@ export const BrowserShell: React.FC = () => {
   } = useBrowser();
 
   const currentEntry = browserState?.currentEntry;
-  const isSiteDestination = currentEntry?.destination.type === 'site';
-  const currentAddress = isSiteDestination ? currentEntry.destination.address : '';
+  const destination = currentEntry?.destination;
+  const isSiteDestination = destination?.type === 'site';
+  const currentAddress = destination && destination.type === 'site' ? destination.address : '';
 
   // Fetch site content if active destination is a site
   const {
@@ -45,7 +46,7 @@ export const BrowserShell: React.FC = () => {
   } = useQuery({
     queryKey: ['siteContent', currentAddress],
     queryFn: () => apiClient.resolveSite(currentAddress),
-    enabled: isSiteDestination && !!currentAddress && currentEntry.status === 'loaded',
+    enabled: isSiteDestination && !!currentAddress && currentEntry?.status === 'loaded',
     retry: 0,
   });
 
@@ -98,7 +99,7 @@ export const BrowserShell: React.FC = () => {
           <IframeViewer
             html={siteData.html}
             address={siteData.address}
-            scrollPosition={currentEntry.scrollPosition}
+            scrollPosition={currentEntry?.scrollPosition || 0}
             onNavigate={(dest, scroll) =>
               navigate({ destination: dest, source: 'link', currentScrollPosition: scroll })
             }

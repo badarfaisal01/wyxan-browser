@@ -10,3 +10,4 @@
 - **HTML Sanitization & Isolation:** Multi-layer defense discarding `<script>`, inline event handlers, external frames, and dangerous schemes, rendered in a sandboxed iframe without `allow-scripts`.
 - **Search Subsystem:** Full-text indexing across page titles and extracted plain-text body content with query restoration on history rewind.
 - **Seed Engine:** Deterministic, idempotent script generating 10+ interconnected `.zz` sites, multiple personas, and realistic visit history.
+
